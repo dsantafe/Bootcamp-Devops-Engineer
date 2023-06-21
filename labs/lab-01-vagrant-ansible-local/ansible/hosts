@@ -1,0 +1,10 @@
+controller ansible_connection=local
+node1      ansible_host=172.17.177.21 ansible_user=vagrant
+node2      ansible_host=172.17.177.22 ansible_user=vagrant
+
+[nodes]
+node[1:2]
+
+[all:vars]
+ansible_ssh_user=vagrant
+ansible_ssh_private_key_file=/ansible/insecure_private_key

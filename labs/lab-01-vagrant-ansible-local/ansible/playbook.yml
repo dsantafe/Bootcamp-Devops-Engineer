@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  user: vagrant
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: latest
