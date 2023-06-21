@@ -33,9 +33,9 @@ Create vagrant and ansible folders to store all the configuration files and dire
     - hosts - file with information about hosts
     - insecure_private_key - private key of created machines
 
-> By default Vagrant shares a `vagrant` folder with permissions of `777`. It allows owner, group and others to have full access on everything that is inside of it.
+By default Vagrant shares a `vagrant` folder with permissions of `777`. It allows owner, group and others to have full access on everything that is inside of it.
 
->> Logging to virtual machine manualy and running `ansible-playbook` command inside `vagrant` directory will output errors connected with permissions. It will render `ansible.cfg` and `insecure_private_key` useless.
+Logging to virtual machine manualy and running `ansible-playbook` command inside `vagrant` directory will output errors connected with permissions. It will render `ansible.cfg` and `insecure_private_key` useless.
 
 ## Test
 
