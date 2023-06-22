@@ -41,7 +41,7 @@ Logging to virtual machine manualy and running `ansible-playbook` command inside
 
 To successfully connect to virtual machines you will need `insecure_private_key`. You can create it by invoking command:`$ vagrant init` inside `vagrant` directory. It will create `insecure_private_key` inside your physical machine in `HOME_DIRECTORY/.vagrant.d.` Copy it to `ansible` folder.
 
-Example in Windows. C:\Users\HOME_DIRECTORY\.vagrant.d
+Example in Windows. C:\Users\HOME_DIRECTORY\ .vagrant.d
 
 ## Test
 
