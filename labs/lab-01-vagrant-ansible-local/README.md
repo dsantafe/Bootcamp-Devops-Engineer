@@ -37,6 +37,12 @@ By default Vagrant shares a `vagrant` folder with permissions of `777`. It allow
 
 Logging to virtual machine manualy and running `ansible-playbook` command inside `vagrant` directory will output errors connected with permissions. It will render `ansible.cfg` and `insecure_private_key` useless.
 
+## Insecure_private_key
+
+To successfully connect to virtual machines you will need `insecure_private_key`. You can create it by invoking command:`$ vagrant init` inside `vagrant` directory. It will create `insecure_private_key` inside your physical machine in `HOME_DIRECTORY/.vagrant.d.` Copy it to `ansible` folder.
+
+Example in Windows. C:\Users\HOME_DIRECTORY\.vagrant.d
+
 ## Test
 
 To check run the following command from the `vagrant` directory: `$ vagrant up`
