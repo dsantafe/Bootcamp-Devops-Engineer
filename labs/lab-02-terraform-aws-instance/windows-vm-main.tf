@@ -22,6 +22,7 @@ resource "aws_instance" "windows-server" {
 	ami 						= "ami-0fc682b2a42e57ca2"
 	instance_type 				= var.windows_instance_type
 	vpc_security_group_ids      = [aws_security_group.aws-windows-sg.id]
+	source_dest_check           = false
 	key_name                    = aws_key_pair.key_pair.key_name
 	user_data                   = data.template_file.windows-userdata.rendered
 
