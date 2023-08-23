@@ -6,7 +6,8 @@ app_environment = "dev"        # Dev, Test, Staging, Prod, etc
 vpc_cidr              = "10.11.0.0/16"
 private_subnet_cidr_1 = "10.11.1.0/24"
 private_subnet_cidr_2 = "10.11.2.0/24"
-public_subnet_cidr    = "10.11.4.0/24"
+public_subnet_cidr_1  = "10.11.3.0/24"
+public_subnet_cidr_2  = "10.11.4.0/24"
 
 # AWS Settings
 aws_access_key = "complete-this"
