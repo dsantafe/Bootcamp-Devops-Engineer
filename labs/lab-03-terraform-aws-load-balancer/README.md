@@ -951,18 +951,23 @@ vm_linux_server_instance_private_ip = [
 
 ## Adjunto evidencia del correcto funcionamiento. 
 1. Instancias
+
 ![Instancias](./assets/Instancias.png)
 
 2. Balanceadores de carga
+
 ![lab-aws-lb-dev-linux-alb](./assets/lab-aws-lb-dev-linux-alb.png)
 
 3. Grupos de destino
+
 ![lab-aws-lb-dev-linux-alb-tg-http](./assets/lab-aws-lb-dev-linux-alb-tg-http.png)
 
 4. Instancia lab-aws-lb-dev-linux-server-1
+
 ![lab-aws-lb-dev-linux-server-1](./assets/lab-aws-lb-dev-linux-server-1.png)
 
 5. Instancia lab-aws-lb-dev-linux-server-2
+
 ![lab-aws-lb-dev-linux-server-2](./assets/lab-aws-lb-dev-linux-server-2.png)
 
 ## Limpieza de recursos
