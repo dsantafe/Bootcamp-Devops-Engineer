@@ -68,7 +68,7 @@ Será necesario confirmar la creación de los recursos escribiendo "yes" cuando 
 
 6. Una vez que la infraestructura esté creada, la salida de Terraform mostrará la dirección DNS del balanceador de carga. Abre un navegador web y accede a la dirección DNS del balanceador de carga. Verás una página que muestra alternativamente el nombre de host de cada instancia.
 
-7. Para conectarte a las instancias via SSH, asegúrate de tener la clave privada generada (lab-aws-lb-dev-windows-us-east-1) en tu máquina local. Actualiza tu archivo ~/.ssh/config con las entradas de host para cada instancia, usando el nombre de host como se muestra en la página del balanceador de carga.
+7. Para conectarte a las instancias via SSH, asegúrate de tener la clave privada generada (lab-aws-lb-dev-linux-us-east-1) en tu máquina local. Actualiza tu archivo ~/.ssh/config con las entradas de host para cada instancia, usando el nombre de host como se muestra en la página del balanceador de carga.
 
 8. Con las configuraciones adecuadas en tu archivo SSH config, puedes conectarte a las instancias utilizando comandos como:
 ```bash
