@@ -1,36 +1,44 @@
-#!/bin/bash
-#Programa para validar procesos, memoria, recursos, variables.
-#by: devp
-clear
-echo ""
-echo "_________________________________________"
-echo " PRECURSOS - Programa de Recursos del PC "
-echo "-----------------------------------------"
-echo "            MENÚ PRINCIAPAL              "
-echo "-----------------------------------------"
-sleep 3
-opcion=0
+# !/bin/bash
+: ' Descripción: Reto 4.
+    Crear un menú con las siguientes opciones:
+    1. Procesos Actuales,
+    2. Memoria Disponible,
+    3. Espacio en Disco,
+    4. Información de Red,
+    5. Variables de Entorno Configuradas,
+    6. Información Programa
+    7. Backup información
+    8. Ingrese una opción.
+    Posterior a esto vamos  a recuperar la opción ingresada, validarla e imprimir la opción y el título de acuerdo a lo ingresado
+    Autor: David Santafe
+    Fecha: 2023-07-17'
+
+OPTION=0
 
 while :
 do
         #Limpiar Pantalla
         clear
-        echo ""
-        echo "1) Proceso Actuales "
+        #Desplegar el menu de opciones
+        echo "_________________________________________"
+        echo " RECURSOS - Programa de Recursos del PC  "
+        echo "-----------------------------------------"
+        echo "            MENÚ PRINCIPAL               "
+        echo "-----------------------------------------"
+        echo "1) Procesos Actuales "
         echo "2) Memoria Disponible "
         echo "3) Espacio en disco "
-        echo "4) Informacion Red"
+        echo "4) Informacion Red "
         echo "5) Variables de entorno configuradas "
         echo "6) Información Programa "
-        echo "7) Comprimir Arcivos SH"
+        echo "7) Comprimir Arcivos *.sh "
         echo "8) Salir "
-        echo ""
         
         #Leer datos de usuario
-        read -n1 -p "Ingrese la opción a seleccionar (1 - 8): " opcion
+        read -n1 -p "Ingrese la opción a seleccionar (1 - 8): " OPTION
         
         #Validar opción ingresada
-        case $opcion in
+        case $OPTION in
                 1)
                         echo -e "\n..Procesos Actuales.."
                         ps axu
@@ -63,8 +71,8 @@ do
                         sleep 3
                         ;;
                 7)
-                        echo -e "\n..Comprimiedo Archivos.."
-                        tar -czvf archivosCompresos.tar.gz $(ls | grep "$*.sh")
+                        echo -e "\n..Comprimiendo Archivos.."
+                        tar -czvf archivos_compresos.tar.gz $(ls | grep "$*.sh")
                         echo -e "\n SUCESS!!"
                         sleep 3
                         ;;

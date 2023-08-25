@@ -1,38 +1,37 @@
 # !/bin/bash
-# Programa para ejemplificar el uso de expresiones condicionales
-# Author: Juan Manuel
+# Descripción: Expresiones Condicionales
+# Autor: David Santafe
+# Fecha: 2023-07-10
 
-edad=0
-pais=""
-pathArchivo=""
+AGE=0
+COUNTRY=""
+PATH=""
 
-read -p "Ingrese su edad: " edad
-read -p "Ingrese su pais: " pais
-read -p "Ingrese el path de su archivo: " pathArchivo
+read -p "Ingrese su edad: " AGE
+read -p "Ingrese su pais: " COUNTRY
+read -p "Ingrese el path de su archivo: " PATH
 
 echo -e "\nExpresiones condicionales con números"
-if [ $edad -lt 10 ]; then
+if [ $AGE -lt 10 ]; then
     echo "La persona es un niñ@"
-elif [ $edad -ge 10 ] && [ $edad -le 17 ]; then
+elif [ $AGE -ge 10 ] && [ $AGE -le 17 ]; then
     echo "La persona se trata de un adolescente"
 else
     echo "La persona es mayor de edad"
 fi
 
-
 echo -e "\nExpresiones condicionales con cadenas"
-if [ $pais = "EE" ]; then
+if [ $COUNTRY = "US" ]; then
     echo "La persona es un Americana"
-elif [ $pais = "EC" ] || [ $pais = "COL" ]; then
+elif [ $COUNTRY = "CO" ] || [ $COUNTRY = "PY" ]; then
     echo "La persona es Suramericana"
 else
     echo "Se desconoce la nacionalidad"
 fi
 
-
-
 echo -e "\nExpresiones condicionales con archivos"
-if [ -d $pathArchivo ]; then
-    echo "El directorio $pathArchivo existe"
+if [ -d $PATH ]; then
+    echo "El directorio $PATH existe"
 else
-    echo "El directorio $pathArchivo no existe"
+    echo "El directorio $PATH no existe"
+fi
