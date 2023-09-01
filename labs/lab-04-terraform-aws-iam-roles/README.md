@@ -1,4 +1,4 @@
-# Configuración de Ejemplo: AWS, Terraform y Balanceador de Carga
+# Configuración de Ejemplo: AWS, Terraform y Gestión de acceso e identidad
 Este repositorio contiene una configuración de ejemplo para el siguiente caso de estudio en AWS utilizando Terraform. En esta configuración, Una empresa de desarrollo recientemente activo una cuenta de AWS y desea dar acceso a su equipo para poder realizar acciones en la cuenta, sin embargo, no desea que todos los usuarios tengan acceso a todos los recursos.
 
 Para esta primera etapa se va a replicar la siguientes roles correspondiente al area de ingenieria.
