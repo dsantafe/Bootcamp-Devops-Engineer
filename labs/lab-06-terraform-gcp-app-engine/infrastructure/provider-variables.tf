@@ -4,6 +4,11 @@
 
 # GCP connection & authentication
 
+variable "gcp_location" {
+  type        = string
+  description = "GCP location"
+}
+
 variable "gcp_region" {
   type        = string
   description = "GCP region"
