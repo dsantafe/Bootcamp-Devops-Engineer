@@ -3,6 +3,30 @@ Este repositorio contiene una configuración de ejemplo para el siguiente caso d
 - Usa Terraform para crear una VM en Google Cloud.
 - Inicia un servidor básico de Flask en Python.
 
+## Requisitos Previos
+Antes de comenzar, asegúrate de tener lo siguiente:
+
+1. Una cuenta de GCP.
+2. [Terraform](https://www.terraform.io/downloads.html) instalado en tu máquina local.
+3. Dado que el archivo principal de terraform se va a cargar en el repositorio de código con todo el proyecto, claramente no podemos almacenar ningún dato sensible. Así que pongamos la clave secreta y la clave de acceso en un archivo diferente, y coloquemos este archivo en nuestro gitignore.
+
+Para separar los datos sensibles, crea un archivo en el mismo directorio llamado terraform.tfvars. Y decláralos así:
+
+```terraform
+# Application Definition 
+app_name        = "lab-gcp-compute-engine" # Do NOT enter any spaces
+app_environment = "dev"                    # Dev, Test, Staging, Prod, etc
+
+# GCP Settings
+gcp_region  = "us-central1"
+gcp_zone    = "us-central1-c"
+gcp_project = "bootcamp-devops-engineer-63703"
+
+# Linux Virtual Machine
+linux_machine_type = "f1-micro" # En este instructivo, usarás el tipo de máquina más pequeño disponible.
+
+```
+
 ## Output del terraform plan.
 ```bash
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -159,6 +183,11 @@ Plan: 5 to add, 0 to change, 0 to destroy.
 Changes to Outputs:
   + vm_linux_server_instance_ip = (known after apply)
 ```
+
+## Adjunto evidencia del correcto funcionamiento. 
+1. Servidor web de Flask básico con Terraform
+
+![Instancias](./assets/lab-gcp-app-engine-dev-linux-server.jpg)
 
 ## Referencias
 - [Implementa un servidor web de Flask básico con Terraform](https://cloud.google.com/docs/terraform/get-started-with-terraform?hl=es-419#ssh-firewall-rule)

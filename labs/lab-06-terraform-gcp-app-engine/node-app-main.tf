@@ -16,7 +16,7 @@ resource "google_app_engine_application_url_dispatch_rules" "ts-appengine-app-di
 }
 
 resource "google_app_engine_standard_app_version" "node-app-engine-v1" {
-  version_id = "v2"
+  version_id = "v1"
   project    = var.gcp_project
   service    = "default"
   runtime    = "nodejs20"
