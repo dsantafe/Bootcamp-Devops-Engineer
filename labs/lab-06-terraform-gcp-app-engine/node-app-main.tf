@@ -2,19 +2,27 @@
 ## App Engine Module - Main ##
 ##############################
 
-resource "google_app_engine_application" "flask-app-engine" {
+resource "google_app_engine_application" "node-app-engine" {
   project     = var.gcp_project
   location_id = var.gcp_location
 }
 
-resource "google_app_engine_standard_app_version" "flask-app-engine-v1" {
-  version_id = "v1"
+resource "google_app_engine_application_url_dispatch_rules" "ts-appengine-app-dispatch-rules" {
+  dispatch_rules {
+    domain  = "*"
+    path    = "/*"
+    service = "default"
+  }
+}
+
+resource "google_app_engine_standard_app_version" "node-app-engine-v1" {
+  version_id = "v2"
   project    = var.gcp_project
   service    = "default"
-  runtime    = "python39"
+  runtime    = "nodejs20"
 
   entrypoint {
-    shell = "gunicorn -b :$PORT main:app"
+    shell = "node index.js"
   }
 
   deployment {
@@ -22,6 +30,8 @@ resource "google_app_engine_standard_app_version" "flask-app-engine-v1" {
       source_url = "https://storage.googleapis.com/${google_storage_bucket.bucket.name}/${google_storage_bucket_object.object.name}"
     }
   }
+
+  instance_class = "F1"
 
   env_variables = {
     port = "8080"
@@ -45,14 +55,25 @@ resource "google_app_engine_standard_app_version" "flask-app-engine-v1" {
   noop_on_destroy           = true
 }
 
+data "archive_file" "function_dist" {
+  type        = "zip"
+  source_dir  = "../app"
+  output_path = "../app/app.zip"
+}
+
 resource "google_storage_bucket" "bucket" {
-  project  = var.gcp_project
-  name     = var.app_bucket_name
-  location = var.gcp_region
+  project       = var.gcp_project
+  name          = var.app_bucket_name
+  location      = var.gcp_region
+  force_destroy = true
+
+  versioning {
+    enabled = true
+  }
 }
 
 resource "google_storage_bucket_object" "object" {
-  name   = "hello.zip"
+  name   = "app.zip"
   bucket = google_storage_bucket.bucket.name
-  source = "app/hello.zip"
+  source = data.archive_file.function_dist.output_path
 }
