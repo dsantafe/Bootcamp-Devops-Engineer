@@ -27,6 +27,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ${{ github.workspace }}/lab-09-docker-dotnet/src/DockerApp/DockerApp
+          context: ${{ github.workspace }}/labs/lab-09-docker-dotnet/src/DockerApp/DockerApp
           push: true
           tags: dsantafe/api-dotnet-dockerapp:latest
