@@ -1,0 +1,18 @@
+version: '3'
+services:
+  dockerapp:
+    hostname: dockerapp
+    domainname: dockerapp
+    # image: <acrName>.azurecr.io/dockerapp:v0.0.1
+    # build: .
+    container_name: dockerapp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 80:80
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 5
+        window: 60s
