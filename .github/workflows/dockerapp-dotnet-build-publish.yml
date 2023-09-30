@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths: 
-      - ${{ github.workspace }}/labs/lab-09-docker-dotnet
+      - 'labs/lab-09-docker-dotnet/src/DockerApp/DockerApp/*'
 
 jobs:
   build-and-publish:
