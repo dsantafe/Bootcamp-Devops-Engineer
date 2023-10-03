@@ -1,0 +1,22 @@
+apiVersion: apps/v1 # Especifica la versión de la API de aplicaciones de Kubernetes que se está utilizando.
+kind: Deployment # Indica que estamos definiendo un recurso de tipo "Deployment" en Kubernetes.
+metadata: # Contiene información sobre el metadato del servicio, incluido su nombre.
+  name: dockerapp-deployment # Es el nombre que se le da al Deployment en Kubernetes.
+spec: # Contiene las especificaciones para el Deployment.
+  replicas: 3 # Indica que se deben mantener 3 réplicas (pods) de la aplicación en ejecución.
+  selector: # Define la forma en que se seleccionarán los pods gestionados por este Deployment.
+    matchLabels: # Define la etiqueta que se utilizará para seleccionar los pods.
+      app: dockerapp # Los pods gestionados por este Deployment deben tener la etiqueta app: dockerapp.
+  template: # Define la plantilla para la creación de nuevos pods.
+    metadata: # Contiene las etiquetas que se asignarán a los pods.
+      labels: # a etiqueta app: dockerapp se asignará a los pods gestionados por este Deployment.
+        app: dockerapp  # Etiqueta asignada a los pods gestionados por este Deployment
+    spec: # Especifica las configuraciones para los contenedores que se ejecutarán en los pods.
+      containers: # Define los contenedores que se ejecutarán en los pods.
+        - name: dockerapp # Es el nombre del contenedor.
+          image: dsantafe/api-dotnet-dockerapp # Es la imagen del contenedor que se ejecutará en los pods.
+          env: # Define las variables de entorno para el contenedor.
+            - name: ASPNETCORE_ENVIRONMENT # Es una variable de entorno que se establece en el contenedor.
+              value: Development # Es el valor de la variable de entorno.
+          ports: # Define los puertos que el contenedor expondrá.
+            - containerPort: 80 # Indica que la aplicación dentro del contenedor estará escuchando en el puerto 80.

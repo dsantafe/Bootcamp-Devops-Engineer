@@ -1,8 +1,8 @@
 version: '3'
 services:
-  dockerapp:
-    build: .
-    container_name: dockerapp
+  dockerapp:   
+    image: dsantafe/api-dotnet-dockerapp
+    container_name: dockerapp-compose
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

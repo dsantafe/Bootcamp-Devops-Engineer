@@ -1,0 +1,14 @@
+apiVersion: v1 # Especifica la versión de la API de Kubernetes que se está utilizando.
+kind: Service # Indica que estamos definiendo un recurso de tipo "Service" en Kubernetes.
+metadata: # Contiene información sobre el metadato del servicio, incluido su nombre.
+  name: dockerapp-service # Es el nombre que se le da al servicio en Kubernetes.
+spec: # Contiene las especificaciones del servicio.
+  selector: # Define qué pods serán seleccionados por este servicio. 
+    app: dockerapp # En este caso, el servicio selecciona los pods que tengan la etiqueta app: dockerapp
+  ports: # Define los puertos utilizados por el servicio.
+    - protocol: TCP # Indica que se está utilizando el protocolo TCP para la comunicación.
+      port: 8080 # Es el puerto en el que este servicio estará escuchando dentro del clúster.
+      targetPort: 80 # Es el puerto al que este servicio redirige las solicitudes. 
+                     # En este caso, las solicitudes serán redirigidas al puerto 80 de los pods seleccionados.
+  type: NodePort # Especifica el tipo de servicio. 
+                 # En este caso, se utiliza NodePort, lo que significa que el servicio será accesible a través de un puerto específico en cada nodo del clúster.
