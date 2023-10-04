@@ -1,6 +1,6 @@
 name: DockerApp DotNet Build and Publish
 
-on:
+on:  
   push:
     branches:
       - main
@@ -8,6 +8,7 @@ on:
       - 'v*'
     paths: 
       - 'labs/lab-09-docker-dotnet/src/DockerApp/DockerApp/*'
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
