@@ -34,8 +34,6 @@ jobs:
           images: dsantafe/api-dotnet-dockerapp
           flavor: latest=true
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=sha
