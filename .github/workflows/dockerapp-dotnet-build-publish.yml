@@ -1,14 +1,14 @@
 name: DockerApp DotNet Build and Publish
 
-on:  
+on:
+  workflow_dispatch:
   push:
     branches:
       - main
     tags:
       - 'v*'
     paths: 
-      - 'labs/lab-09-docker-dotnet/src/DockerApp/DockerApp/*'
-  workflow_dispatch:
+      - 'labs/lab-09-docker-dotnet/src/DockerApp/DockerApp/*'  
 
 jobs:
   build-and-publish:
