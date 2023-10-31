@@ -23,5 +23,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// only test with tag

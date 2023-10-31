@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dockerapp-deployments
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/dsantafe/Bootcamp-Devops-Engineer"
+    path: labs/lab-09-docker-dotnet/kubernetes/deployments
+    targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: dockerapp-namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
