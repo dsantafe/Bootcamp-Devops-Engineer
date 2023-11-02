@@ -120,7 +120,7 @@ Este repositorio contiene los archivos y comandos necesarios para desplegar una 
 
 ## Pasos para desplegar la aplicación
 
-1. **Iniciar Minikube:**
+1. Iniciar Minikube:
 
    Asegúrate de que Minikube esté iniciado antes de aplicar las configuraciones. Si no está iniciado, inicia Minikube con el siguiente comando:
    ```bash

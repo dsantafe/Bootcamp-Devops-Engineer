@@ -2,10 +2,15 @@
 
 Este repositorio contiene los archivos y comandos necesarios para desplegar una aplicación en un clúster de Kubernetes utilizando Minikube y Argo CD.
 
-
 ## Pasos para desplegar la aplicación
 
-1. **Iniciar Minikube:**
+1. Clona este repositorio:
+    ```shell
+    git clone https://github.com/dsantafe/Bootcamp-Devops-Engineer
+    cd Bootcamp-Devops-Engineer/labs/lab-10-kubernetes-argocd
+    ```
+
+2. Iniciar Minikube:
 
    Asegúrate de que Minikube esté iniciado antes de aplicar las configuraciones. Si no está iniciado, inicia Minikube con el siguiente comando:
    ```shell
@@ -13,7 +18,7 @@ Este repositorio contiene los archivos y comandos necesarios para desplegar una 
    $ minikube dashboard
    ```
 
-1. **Instalar e iniciar Argo CD:**
+3. Instalar e iniciar Argo CD:
 
    Instalación del Chart
    ```shell
@@ -32,36 +37,53 @@ Este repositorio contiene los archivos y comandos necesarios para desplegar una 
    $ kubectl -n argo-cd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
    ```
 
-2. Aplicar el archivo de Deployment:
-Aplica el archivo de Deployment para desplegar la aplicación en Kubernetes. Este archivo especifica cómo se deben ejecutar las réplicas de la aplicación.
-    ```shell
-    $ cd /argocd/deployments
-    $ kubectl apply -f dockerapp-deployments.yaml -n argo-cd
+4. Aplicar el archivo de ArgoCD:
+Aplica el archivo de ArgoCD para desplegar la aplicación en Kubernetes. Este archivo referencia la carpeta /dev donde especifica el servicio para exponer la aplicación en un puerto específico en Minikube y cómo se deben ejecutar las réplicas de la aplicación.
+    ```shell    
+    $ kubectl apply -f application.yaml
     ```
-    ![Instancias](./assets/dockerapp-service.png)
+    ArgoCD
+    ![Instancias](./assets/dockerapp-argo-application-detail-v1.png)
+    ![Instancias](./assets/api-dotnet-dockerapp-v1.png)
+    Minikube Namespace
+    ![Instancias](./assets/dockerapp-namespace.png)
 
-3. Aplicar el archivo de Service:
-Aplica el archivo de Service para exponer la aplicación en un puerto específico en Minikube.
-    ```shell
-    $ cd /argocd/services
-    $ kubectl apply -f dockerapp-services.yaml -n argo-cd
-    ```
-    ![Instancias](./assets/dockerapp-deployment.png)
-
-4. Obtener la URL del servicio:
+5. Obtener la URL del servicio:
 Obtén la URL para acceder a la aplicación a través de Minikube.
     ```shell
     $ kubectl port-forward service/dockerapp-service -n dockerapp-namespace 8081:8080
     ```
 
-    Copia la URL generada y pégala en tu navegador web o utilízala para acceder a tu aplicación.
-
-5. Acceso a la aplicación http://localhost:8081/swagger
+6. Acceder a la aplicación http://localhost:8081/swagger desplegada con la imagen de Docker **dsantafe/api-dotnet-dockerapp:sha-6c594b3**
     ```shell
     $ curl -X 'GET' \
     'http://localhost:8081/WeatherForecast' \
     -H 'accept: text/plain'
-
-    [{"date":"2023-10-04T03:37:27.9362486+00:00","temperatureC":27,"temperatureF":80,"summary":"Sweltering"},{"date":"2023-10-05T03:37:27.9371344+00:00","temperatureC":4,"temperatureF":39,"summary":"Chilly"},{"date":"2023-10-06T03:37:27.9371437+00:00","temperatureC":20,"temperatureF":67,"summary":"Chilly"},{"date":"2023-10-07T03:37:27.9371439+00:00","temperatureC":42,"temperatureF":107,"summary":"Freezing"},{"date":"2023-10-08T03:37:27.937144+00:00","temperatureC":23,"temperatureF":73,"summary":"Freezing"}]
     ```
-    ![Instancias](./assets/dockerapp-minikube.png)
+    Swagger DockerApp
+    ![Instancias](./assets/api-dotnet-dockerapp-swagger-v1.png)
+
+7. Modificar el archivo /dev/dockerapp-deployment.yaml con la imagen **dsantafe/api-dotnet-dockerapp:sha-2d0f2b3** para la sincronización automática de ArgoCD (por defecto se ejecuta cada 3 minutos).
+    ```yaml
+    image: dsantafe/api-dotnet-dockerapp:sha-2d0f2b3
+    ```
+    ArgoCD
+    ![Instancias](./assets/dockerapp-argo-application-detail-v2.png)
+    ![Instancias](./assets/api-dotnet-dockerapp-v2.png)
+    ![Instancias](./assets/dockerapp-argo-application-history.png)
+
+    Notas: repite nuevamente el paso #5 y podrás evidenciar un nuevo endpoint disponible en la aplicación.
+     ```shell
+    $ curl -X 'GET' \
+    'http://localhost:8081/Books' \
+    -H 'accept: text/plain'
+    ```
+    Swagger DockerApp
+    ![Instancias](./assets/api-dotnet-dockerapp-swagger-v2.png)
+
+## Links
+- Config repo: https://github.com/dsantafe/Bootcamp-Devops-Engineer
+- Docker repo: https://hub.docker.com/repository/docker/dsantafe/api-dotnet-dockerapp
+- Install ArgoCD: https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd
+- Login to ArgoCD: https://argo-cd.readthedocs.io/en/stable/getting_started/#4-login-using-the-cli
+- ArgoCD Configuration: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
