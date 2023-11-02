@@ -14,7 +14,7 @@ spec: # Contiene las especificaciones para el Deployment.
     spec: # Especifica las configuraciones para los contenedores que se ejecutarán en los pods.
       containers: # Define los contenedores que se ejecutarán en los pods.
         - name: dockerapp # Es el nombre del contenedor.
-          image: dsantafe/api-dotnet-dockerapp:sha-2d0f2b3 # Es la imagen del contenedor que se ejecutará en los pods.
+          image: dsantafe/api-dotnet-dockerapp # Es la imagen del contenedor que se ejecutará en los pods.
           env: # Define las variables de entorno para el contenedor.
             - name: ASPNETCORE_ENVIRONMENT # Es una variable de entorno que se establece en el contenedor.
               value: Development # Es el valor de la variable de entorno.

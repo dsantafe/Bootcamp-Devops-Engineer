@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dockerapp
+  template:
+    metadata:
+      labels:
+        app: dockerapp
+    spec:
+      containers:
+        - name: dockerapp
+          image: dsantafe/api-dotnet-dockerapp:sha-6c594b3
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+          ports:
+            - containerPort: 80
