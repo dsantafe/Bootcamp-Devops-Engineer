@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dockerapp
-          image: dsantafe/api-dotnet-dockerapp:sha-6c594b3
+          image: dsantafe/api-dotnet-dockerapp:sha-2d0f2b3
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
