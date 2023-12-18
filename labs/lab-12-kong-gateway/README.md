@@ -1,4 +1,10 @@
 # [Install Kong Gateway on Docker](https://docs.konghq.com/gateway/latest/install/docker/)
+
+## Contributors
+- David Santafé Zorrilla
+- Joan Muñoz Tejada
+- Juan Camilo Gómez Alonso
+
 ## Prepare the database
 
 1. Create a custom Docker network to allow the containers to discover and communicate with each other:
